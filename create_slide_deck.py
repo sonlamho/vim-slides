@@ -19,7 +19,8 @@ def get_slides(fpath: str, n_lines: int) -> List[Tuple[str, str]]:
                 # create a slide
                 post_process(texts)
                 assert len(texts) <= n_lines
-                slides.append((ext, ''.join(texts)))
+                padding = ['\n'] * (n_lines - len(texts))
+                slides.append((ext, ''.join(texts + padding)))
             # prep for a new slide
             ext = line.strip('#').strip()
             if not ext.startswith('.'):
