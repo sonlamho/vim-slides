@@ -38,8 +38,10 @@ def post_process(slide_lines: List[str]):
 def export(slides: List[Tuple[str, str]], fpath: str):
     for i, ext_text in enumerate(slides):
         ext, text = ext_text
-        slide_name = f'slide_{i}{ext}'
-        with open(os.path.join(fpath, slide_name), 'x') as f:
+        num = str(i).zfill(8)
+        slide_path = os.path.join(fpath, f'slide_{num}{ext}')
+        mode = 'w' if os.path.exists(slide_path) else 'x'
+        with open(slide_path, mode) as f:
             f.write(text)
 
 
