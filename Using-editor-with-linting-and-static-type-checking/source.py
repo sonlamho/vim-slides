@@ -1,23 +1,25 @@
 ## .txt
 
-     ______                            _
-    |  ____|                          | |
-    | |__     _ __    ___    ___    __| |   ___    _ __ ___
-    |  __|   | '__|  / _ \  / _ \  / _` |  / _ \  | '_ ` _ \
-    | |      | |    |  __/ |  __/ | (_| | | (_) | | | | | | |
-    |_|      |_|     \___|  \___|  \__,_|  \___/  |_| |_| |_|
+    ╦┌─┐  ┬┌┬┐  ┌─┐┌─┐┌─┐┌─┐┬┌┐ ┬  ┌─┐  ┌┬┐┌─┐  ┬ ┬┌─┐┬  ┬┌─┐
+    ║└─┐  │ │   ├─┘│ │└─┐└─┐│├┴┐│  ├┤    │ │ │  ├─┤├─┤└┐┌┘├┤
+    ╩└─┘  ┴ ┴   ┴  └─┘└─┘└─┘┴└─┘┴─┘└─┘   ┴ └─┘  ┴ ┴┴ ┴ └┘ └─┘
+    ┌┬┐┌─┐┌─┐  ┌┬┐┬ ┬┌─┐┬ ┬  ┌─┐┬─┐┌─┐┌─┐┌┬┐┌─┐┌┬┐┌─┐
+     │ │ ││ │  ││││ ││  ├─┤  ├┤ ├┬┘├┤ ├┤  │││ ││││ ┌┘
+     ┴ └─┘└─┘  ┴ ┴└─┘└─┘┴ ┴  └  ┴└─└─┘└─┘─┴┘└─┘┴ ┴ o
+
 
 ## .txt
 
-    ╔╦╗┌─┐┌─┐  ┌┬┐┬ ┬┌─┐┬ ┬  ┌─┐┬─┐┌─┐┌─┐┌┬┐┌─┐┌┬┐┌─┐
-     ║ │ ││ │  ││││ ││  ├─┤  ├┤ ├┬┘├┤ ├┤  │││ ││││ ┌┘
-     ╩ └─┘└─┘  ┴ ┴└─┘└─┘┴ ┴  └  ┴└─└─┘└─┘─┴┘└─┘┴ ┴ o
+    ╔╦╗┌─┐┌─┐  ┌┬┐┬ ┬┌─┐┬ ┬  ┌─┐┬─┐┌─┐┌─┐┌┬┐┌─┐┌┬┐
+     ║ │ ││ │  ││││ ││  ├─┤  ├┤ ├┬┘├┤ ├┤  │││ ││││
+     ╩ └─┘└─┘  ┴ ┴└─┘└─┘┴ ┴  └  ┴└─└─┘└─┘─┴┘└─┘┴ ┴
 
     • Python gives you a lot of freedom
 
     • That may not be a good thing
 
     • This talk is about how to restrict your freedom
+      when coding in Python
 
 ## .txt
 
@@ -30,8 +32,8 @@
     • Features include:
         ◦ Yelling at you for syntax errors
         ◦ Yelling at you for stylistic errors
-        ◦ Forcing you to document your code by adding
-          static types
+        ◦ Forcing you to document your code by adding static types,
+          and keep the types consistent and updated.
         ◦ Other features: auto-completion, go to definition,
           go to references
 
@@ -41,15 +43,21 @@
     ║╣  │││ │ │ │├┬┘└─┐  │  ├─┤│ │││  ├┤ └─┐
     ╚═╝─┴┘┴ ┴ └─┘┴└─└─┘  └─┘┴ ┴└─┘┴└─┘└─┘└─┘
 
-    • Vscode
-    • atom
-    • vim / neovim
-    • (This presentation is in neovim)
+    • Vscode (*)
+    • Vim / Neovim (*)
+    • Atom
+    • (This presentation is in Neovim)
+
+## .txt
+
+
+
+        Let's jump right to a demo of how code editors
+            can set boundaries for your code
 
 ## .py
 
-# DEMO
-# Forcing better code style
+# DEMO: flake8 - forcing better code style
 
 class BeepBoop:
     def __init__(self,beep,
@@ -59,13 +67,12 @@ class BeepBoop:
               .boop= boop;
       return
     def go(  self):   print(self.\
-      beep\                               );
+      beep                               );
 BeepBoop('beeeep','').go()
 
 ## .py
 
-# DEMO
-# Detecting obvious errors
+# DEMO: flake8 - detecting syntax errors
 
 import os
 def loopy(n)
@@ -77,8 +84,7 @@ def loopy(n)
 
 ## .py
 
-# DEMO
-#Configuring for specific style
+# DEMO: flake8 - configuring for our own style
 
 def loopy(n):
   for i in range(n):
@@ -87,8 +93,7 @@ def loopy(n):
 
 ## .py
 
-# DEMO
-# Static type checking
+# DEMO: mypy - static type checking
 from math import log
 
 def log1p(x: float) -> float:
@@ -104,21 +109,19 @@ log1p('123')
     ╚═╗ │ ├─┤ │ ││     │ └┬┘├─┘│││││ ┬
     ╚═╝ ┴ ┴ ┴ ┴ ┴└─┘   ┴  ┴ ┴  ┴┘└┘└─┘
 
-    • Type annotations is part of Python syntax
-      since version 3.5
-  
-    • Type annotations does not change the code's
-      runtime behavior
-  
-    • `mypy` is a separate program that can read
-      your code (not running it) and identify type
-      errors (given that you annotate correctly.)
+    • Type annotations is part of Python syntax since version 3.5
+
+    • Type annotations does not change the code's runtime behavior
+
+    • `mypy` is a separate program that can read your code
+      (not running it) and identify type errors (given that
+      you annotate correctly.)
 
 ## .py
 
 # DEMO: Annotate a function
-def func0(x: str) -> int:
-    return len(x)
+def func0(x:str, y:str = 'abc') -> int:
+    return len(x) + len(y)
 
 func0('some string')    # OK
 func0(5678)             # error
@@ -139,6 +142,8 @@ def func0(x: str) -> str:
 
 def func1(x: int) -> int:
     return log(x + 1)
+
+func1(4.5)
 
 ## .txt
 
@@ -167,13 +172,13 @@ append1(0.777)              # error
 append1(['a', 'b', 'c'])    # error, runtime ok
 append1([1.0, 2.0, 3.0])    # error, runtime ok
 
-## .py 
+## .py
 
 # DEMO: generic types - Tuple
 # Tuple[T0, T1] : tuple of 2 elements
 # Tuple[T0, T1, T2] : tuple of 3 elements
 # Tuple[T,...] : tuple of uncertain length
-from typing import Tuple 
+from typing import Tuple
 
 def func2(t: Tuple[int, str]) -> int:
     return t[0]
@@ -194,6 +199,17 @@ def reinit(d: Dict[str, Tuple[str, float]]) -> List[str]:
     d['Bob'][1] = 30
     return d.keys()
 
+## .py
+
+# DEMO: DataFrame, Series, ndarray
+from pandas import DataFrame, Series
+
+def col_prefixed(df: DataFrame, colname: str) -> Series:
+    s = df[colname].copy()
+    prefixed_label = 'p_' + colname
+    s.name = prefixed_label
+    return s
+
 
 ## .py
 
@@ -213,13 +229,61 @@ def get_log_age(d: Dict[str, Tuple[str, float]], name: str
 
 ## .py
 
-# DEMO: type-checking follow imports
-from slide_0 import func0
+# DEMO: you can type annotate variables too, though often not needed
+from typing import Dict
 
-func0(123)
-func0('abc')
-reveal_type(func0('abc'))
+d: Dict[str, float] = {'mark': 10.5, 'peter': 13.4}
+reveal_type(d['bob'])
 
+arr = [[0, 1], [12, 13], [24, 25]]
+reveal_type(arr[2])
+reveal_type(arr[1][1])
+
+## .py
+
+# DEMO: constants: variables that should/must not be changed
+# useful for configs
+from typing import Sequence, Mapping
+from typing_extensions import Final
+
+REPO_NAME: Final[str] = 'jackson'
+ADMIN_USERS: Final[Sequence] = ['Chin Chin', 'Shiwen']
+POSITION: Final[Mapping] = {'a': 1, 'b': 2, 'c': 3}
+
+# mypy will catch you if you change constants:
+REPO_NAME = 'Jeksam'
+ADMIN_USERS.append('Son')
+POSITION['a'] = 99
+
+## .py
+
+# DEMO: Union types
+from typing import Union
+import re
+
+def process_ln(x: Union[str, int]) -> int:
+    if isinstance(x, int):
+        return x
+    else:
+        match = re.findall(r'^[0-9]+', x)
+        if len(match) > 0:
+            return int(match[0])
+        else:
+            return 0
+
+process_ln(123)
+
+## .py
+
+# DEMO: Optional[T] = Union[T, None]
+from typing import Optional
+
+def func4(x: Optional[str]) -> str:
+    return '' if x is None else x
+
+func4('asdf')       # Ok
+func4(None)         # Ok
+func4(3.14)         # error
 
 ## .txt
 
@@ -227,52 +291,19 @@ reveal_type(func0('abc'))
     ╚═╗ │ ├─┤ │ ││     │ └┬┘├─┘│││││ ┬
     ╚═╝ ┴ ┴ ┴ ┴ ┴└─┘   ┴  ┴ ┴  ┴┘└┘└─┘
 
-    • Type annotations can serve as documentations,
-      it's "self documenting code"
-
-    • Successfully type-checked code are cleaner, more
-      readable, and better structured
+    • Good type annotations tell you how the function should be used.
+    • Type-checking provide mechanism to ensure annotations are correct
+    • Successfully type-checked code are cleaner, more readable,
+      and better structured
+    • Static typing is a big topic:
+        ◦ https://mypy.readthedocs.io/en/stable/introduction.html
+        ◦ https://dropbox.tech/application/our-journey-to-type-checking-4-million-lines-of-python
 
 
 ## .txt
 
-    STORY OF INVENTION OF MANNED FLIGHTS
-
-    • Beside the Wrights brothers, another group attempted manned
-      flights: led by Samuel Pierpont Langley. They are very
-      well funded, by the U.S. war department and the Smithsonian
-
-## .txt
-
-    STORY OF INVENTION OF MANNED FLIGHTS
-
-    • Beside the Wrights brothers, another group attempted manned
-      flights: led by Samuel Pierpont Langley. They are very
-      well funded, by the U.S. war department and the Smithsonian
-        ◦ The result... to quote a congressman:
-          "You tell Langley for me ... that the only thing he
-          ever made fly was Government money."
-
-## .txt
-
-    STORY OF INVENTION OF MANNED FLIGHTS
-
-    • Beside the Wrights brothers, another group attempted manned
-      flights: led by Samuel Pierpont Langley. They are very
-      well funded, by the U.S. war department and the Smithsonian
-        ◦ The result... to quote a congressman:
-          "You tell Langley for me ... that the only thing he
-          ever made fly was Government money."
-  
-    • The Wright brothers: 4 years of experimentations, funded
-      by their own bicycle shop, created controllable aircrafts
-      that can take off and land - ultimately led to the modern
-      day airplanes.
-
-## .txt
 
 
-    
 
     "Freedom is the enemy of creativity,
      limitations are its saviour"
@@ -290,7 +321,7 @@ reveal_type(func0('abc'))
 ## .txt
 
 
-    
+
 
     "Embrace code linting and static type checking"
                                     - Me
