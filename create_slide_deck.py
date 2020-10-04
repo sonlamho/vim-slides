@@ -9,6 +9,7 @@ DEFAULT_LINES = 20
 def get_slides(fpath: str, n_lines: int) -> List[Tuple[str, str]]:
     with open(fpath, "r") as f:
         lines = f.readlines()
+        preprocess_lines(lines)
     #
     slides = []
     ext = ""
@@ -29,6 +30,14 @@ def get_slides(fpath: str, n_lines: int) -> List[Tuple[str, str]]:
         else:
             texts.append(line)
     return slides
+
+def preprocess_lines(lines: List[str]) -> None:
+    while lines[-1].strip() == '':
+        lines.pop()
+    if not lines[-1].startswith('##'):
+        lines.append('##\n')
+    if not lines[0].startswith('##'):
+        lines.insert(0, '## .txt\n')
 
 
 def post_process(slide_lines: List[str]):

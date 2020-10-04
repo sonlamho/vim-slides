@@ -326,4 +326,3 @@ func4(3.14)         # error
     "Embrace code linting and static type checking"
                                     - Me
 
-##
