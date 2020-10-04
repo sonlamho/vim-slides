@@ -6,10 +6,9 @@
   - Final slide must be followed by a `##` line to mark the end.
 
 ## How to create slides from source file:
-  - source file is expected to be named `source.py`
-  - If `source.py` is in folder `path/to/folder` then run:
+  - If source file is named `source.py` in folder `path/to/folder/` then run:
       ```
-      python create_slide_deck.py path/to/folder
+      python create_slide_deck.py path/to/folder/source.py
       ```
     will generate `slide_*` files in that same folder.
   
