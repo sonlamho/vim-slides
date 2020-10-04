@@ -31,13 +31,14 @@ def get_slides(fpath: str, n_lines: int) -> List[Tuple[str, str]]:
             texts.append(line)
     return slides
 
+
 def preprocess_lines(lines: List[str]) -> None:
-    while lines[-1].strip() == '':
+    while lines[-1].strip() == "":
         lines.pop()
-    if not lines[-1].startswith('##'):
-        lines.append('##\n')
-    if not lines[0].startswith('##'):
-        lines.insert(0, '## .txt\n')
+    if not lines[-1].startswith("##"):
+        lines.append("##\n")
+    if not lines[0].startswith("##"):
+        lines.insert(0, "## .txt\n")
 
 
 def post_process(slide_lines: List[str]):
